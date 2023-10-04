@@ -15,10 +15,10 @@ class Stack:
         self.stack_size: int = 5
 
     def is_empty(self):
-        return len(self.stack) == 0
+        return self.top == -1
 
     def is_full(self):
-        return len(self.stack) == self.stack_size
+        return self.top == self.stack_size - 1
 
     def push(self, element):
         if self.is_full():

@@ -43,11 +43,11 @@ class Queue:
 
     def is_full(self):
         # Method to check if queue has reached its max size
-        return len(self.queue) == self.queue_size
+        return self.rear == self.queue_size - 1
 
     def is_empty(self):
         # Method to check if queue is empty
-        return len(self.queue) == 0
+        return self.front == -1
 
     def show_queue(self):
         # Method to return elements of the queue
