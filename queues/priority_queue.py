@@ -21,4 +21,47 @@ The element with the highest priority is removed first.
 Implementation of Priority Queue
 Priority queue can be implemented using an array, a linked list, a heap data structure, or a binary search tree. 
 Among these data structures, heap data structure provides an efficient implementation of priority queues.
+
+Here Priority Queue will be implemented using Heap.
+
+Operation on Priority Queue:
+
+1. Inserting an Element into the Priority Queue
+
+Inserting an element into a priority queue (max-heap) is done by the following steps.
+
+-Insert the new element at the end of the tree.
+-Heapify the tree
+
+Algorithm for insertion of an element into priority queue (max-heap):
+If there is no node, 
+  create a newNode.
+else (a node is already present)
+  insert the newNode at the end (last node from left to right.)
+  
+heapify the array
+
+
+For Min Heap, the above algorithm is modified so that parentNode is always smaller than newNode.
+
+2. Deleting an Element from the Priority Queue
+
+- Select the element to be deleted.
+
+- Swap it with the last element
+
+- Remove the last element
+
+- Heapify the tree
+
+
+Algorithm for deletion of an element in the priority queue (max-heap):
+If nodeToBeDeleted is the leafNode
+  remove the node
+Else swap nodeToBeDeleted with the lastLeafNode
+  remove noteToBeDeleted
+   
+heapify the array
+
+For Min Heap, the above algorithm is modified so that the both childNodes are smaller than currentNode.
 """
