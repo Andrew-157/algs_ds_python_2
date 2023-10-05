@@ -122,3 +122,9 @@ obj.printCQueue()
 obj.dequeue()
 print("After removing an element from the queue")
 obj.printCQueue()
+
+
+"""
+Circular Queue Complexity Analysis
+The complexity of the enqueue and dequeue operations of a circular queue is O(1) for (array implementations).
+"""
