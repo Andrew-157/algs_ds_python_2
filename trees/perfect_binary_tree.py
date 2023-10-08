@@ -32,37 +32,35 @@ from typing import Optional
 
 
 class Node:
-    def __init__(self, item):
-        self.item = item
+    def __init__(self, data):
+        self.data = data
         self.left: Optional[Node] = None
         self.right: Optional[Node] = None
 
 
-def calculate_depth(node: Node):
-    # Calculate the depth
-    d = 0
-    while node is not None:
-        d += 1
+def calculate_height(node: Node) -> int:
+    height = 0
+
+    while node:
+        height += 1
         node = node.left
-    return d
+
+    return height
 
 
-def is_perfect(root: Node, d, level=0):
-    # Check if the tree is the perfect binary tree
+def is_perfect(node: Node, node_height, level=0):
 
-    if root is None:
-        # Check if the tree is empty
+    if node is None:
         return True
 
-    # Check the presence of trees
-    if (root.left is None and root.right is None):
-        return (d == level + 1)
+    if node.left is None and node.right is None:
+        return node_height == level + 1
 
-    if (root.left is None or root.right is None):
+    if node.left is None or node.right is None:
         return False
 
-    return (is_perfect(root.left, d, level + 1) and
-            is_perfect(root.right, d, level + 1))
+    return is_perfect(node.left, node_height, level + 1) \
+        and is_perfect(node.right, node_height, level + 1)
 
 
 root = Node(1)
@@ -70,9 +68,10 @@ root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
+root.right.left = Node(6)
+root.right.right = Node(7)
 
-
-if (is_perfect(root, calculate_depth(root))):
+if (is_perfect(root, calculate_height(root))):
     print("The tree is a perfect binary tree")
 else:
     print("The tree is not a perfect binary tree")
