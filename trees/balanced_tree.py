@@ -2,6 +2,8 @@ from typing import Optional
 
 # Checking if binary tree is height balanced in Python
 
+from typing import Optional
+
 
 class Node:
     def __init__(self, data):
@@ -10,39 +12,35 @@ class Node:
         self.right: Optional[Node] = None
 
 
-class Height:
-    def __init__(self):
-        self.height = 0
+def get_height(root: Optional[Node]):
+
+    if root is None:
+        return 0
+
+    return 1 + max(get_height(root.left), get_height(root.right))
 
 
-def is_height_balanced(root: Node, height):
-
-    left_height = Height()
-    right_height = Height()
+def is_balanced(root: Optional[Node]):
 
     if root is None:
         return True
 
-    l = is_height_balanced(root.left, left_height)
-    r = is_height_balanced(root.right, right_height)
+    return is_balanced(root.left)\
+        and is_balanced(root.right)\
+        and abs(get_height(root.left) - get_height(root.right)) <= 1
 
-    height.height = max(left_height.height, right_height.height) + 1
-
-    if abs(left_height.height - right_height.height) <= 1:
-        return l and r
-
-    return False
-
-
-height = Height()
 
 root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
+root.right.left = Node(6)
+root.right.right = Node(7)
+root.left.left.left = Node(8)
+root.left.left.left.left = Node(10)
 
-if is_height_balanced(root, height):
-    print('The tree is balanced')
+if is_balanced(root):
+    print("The tree is balanced")
 else:
-    print('The tree is not balanced')
+    print("The tree is not balanced")
