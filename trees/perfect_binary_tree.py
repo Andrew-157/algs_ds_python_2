@@ -39,13 +39,11 @@ class Node:
 
 
 def calculate_height(node: Node) -> int:
-    height = 0
 
-    while node:
-        height += 1
-        node = node.left
+    if node is None:
+        return 0
 
-    return height
+    return 1 + max(calculate_height(node.left), calculate_height(node.right))
 
 
 def is_perfect(node: Node, node_height, level=0):
