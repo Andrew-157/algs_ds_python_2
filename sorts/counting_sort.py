@@ -2,7 +2,7 @@
 # Counting Sort implementation in Python
 
 
-def counting_sort(input_array: list) -> None:
+def counting_sort(input_array: list) -> list:
     # FInd the maximum element of the input array
     M = max(input_array)
 
