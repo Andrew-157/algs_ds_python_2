@@ -1,11 +1,17 @@
 
+counter = 0
+
 # Heap Sort implementation in Python
+
 
 def heapify(array: list, n: int, i: int) -> None:
     # Find the largest among root and its children
     largest = i
     left = 2 * i + 1
     right = 2 * i + 2
+
+    global counter
+    counter += 1
 
     if left < n and array[left] > array[largest]:
         largest = left
