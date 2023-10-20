@@ -1,5 +1,5 @@
 
-# Binary Search implementation in Python
+# Iterative Binary Search implementation in Python
 
 
 def binary_search(array: list, x: int, low: int, high: int) -> int:
